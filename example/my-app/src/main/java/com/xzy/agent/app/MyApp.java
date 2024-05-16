@@ -1,5 +1,7 @@
 package com.xzy.agent.app;
 
+import java.lang.management.ManagementFactory;
+
 /**
  * 目标程序
  *
@@ -12,8 +14,19 @@ public class MyApp {
         System.out.println(str);
     }
 
-    public static void main(String[] args) {
-        new MyApp().saySomething("hello world!");
+    public static void main(String[] args) throws InterruptedException {
+        MyApp myApp = new MyApp();
+
+        while (true) {
+            myApp.saySomething("PID：" + getPid() + " ==> hello world!");
+            Thread.sleep(5000);
+        }
     }
 
+    public static String getPid() {
+        String jvmName = ManagementFactory.getRuntimeMXBean().getName();
+
+        // JVM名称通常是以 "<pid>@<hostname>" 的格式提供
+        return jvmName.split("@")[0];
+    }
 }

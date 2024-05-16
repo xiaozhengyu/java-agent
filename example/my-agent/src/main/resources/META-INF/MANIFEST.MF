@@ -1,2 +1,4 @@
 Manifest-Version: 1.0
-Premain-Class: com.xzy.agent.agent.MyAgent
+Agent-Class: com.xzy.agent.agent.MyAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true

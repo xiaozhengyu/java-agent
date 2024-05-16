@@ -96,6 +96,10 @@ Java Agent 是一种在 Java 应用程序中用于实现监控、分析和动态
 
 
 
+演示 “在 JVM 启动时加载 Java Agent 程序” 的简单示例。
+
+
+
 ### 1.1 目标程序
 
 
@@ -142,6 +146,75 @@ Java Agent 是一种在 Java 应用程序中用于实现监控、分析和动态
      Instrumenting com/xzy/agent/app/MyApp
      hello world!
      ```
+
+
+
+## 02 - hello_world
+
+
+
+演示在 “应用程序运行时动态加载 Java Agent” 的简单示例。
+
+
+
+### 2.1 目标程序
+
+
+
+### 2.2 代理程序
+
+
+
+### 2.3 注入程序
+
+
+
+### 2.4 测试
+
+
+
+测试流程：
+
+1.   启动目标程序：
+
+     控制台打印结果：（每5秒打印一次 PID 以及 “hello world!” 字符串）
+
+     ```
+     ...
+     PID：7976 ==> hello world!
+     PID：7976 ==> hello world!
+     PID：7976 ==> hello world!
+     PID：7976 ==> hello world!
+     PID：7976 ==> hello world!
+     ...
+     ```
+
+2.   打包代理程序
+
+3.   根据目标程序打印的 PID 以及代理程序的的 jar 包地址调整注入程序，启动注入程序：
+
+     [注入程序]控制台打印结果：
+
+     ```
+     my-app pic：7976
+     my-agent path:E:\StudyPlace\CodeRepository\java-agent\example\my-agent\target\my-agent-1.0-SNAPSHOT.jar
+     ```
+
+     [目标程序]控制台打印结果：
+
+     ```
+     ...
+     PID：7976 ==> hello world!
+     PID：7976 ==> hello world!
+     PID：7976 ==> hello world!
+     Java Agent loaded dynamically
+     PID：7976 ==> hello world!
+     PID：7976 ==> hello world!
+     PID：7976 ==> hello world!
+     ...
+     ```
+
+     
 
 
 
